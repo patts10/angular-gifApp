@@ -13,9 +13,13 @@ export class BusquedaComponent {
 
   @ViewChild('txtBuscar') txtBuscar!: ElementRef<HTMLInputElement>;
 
-  call(): void {
+  buscar(): void {
 
     const valor = this.txtBuscar.nativeElement.value;
+
+    if ( valor.trim() === '' ) {
+      return;      
+    }
 
     this.gifsService.buscarGifs(valor);
     this.txtBuscar.nativeElement.value = "";
